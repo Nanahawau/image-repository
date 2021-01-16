@@ -1,9 +1,9 @@
 package com.nana.imagerepository.Entity;
 
-import com.nana.imagerepository.model.ImagePermissiion;
+import com.nana.imagerepository.Model.ImagePermission;
+import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.sql.Blob;
 import java.util.Arrays;
 
 @Entity
@@ -13,23 +13,19 @@ public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String title;
-    private String size;
-    private String description;
-    @Lob
-    private byte[] data;
-    private ImagePermissiion permission;
+    private String userId;
+    private String filePath;
+    @Column(unique = true)
+    private Boolean isPrivate = true;
 
 
     public Image() {
     }
 
-    public Image(String title, String size, String description, byte[] data, ImagePermissiion permission) {
-        this.title = title;
-        this.size = size;
-        this.description = description;
-        this.data = data;
-        this.permission = permission;
+    public Image(String userId, String filePath, Boolean isPrivate) {
+        this.userId = userId;
+        this.filePath = filePath;
+        this.isPrivate = isPrivate;
     }
 
     public Long getId() {
@@ -40,56 +36,37 @@ public class Image {
         this.id = id;
     }
 
-    public String getTitle() {
-        return title;
+    public String getUserId() {
+        return userId;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
-    public String getSize() {
-        return size;
+    public String getFilePath() {
+        return filePath;
     }
 
-    public void setSize(String size) {
-        this.size = size;
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
     }
 
-    public String getDescription() {
-        return description;
+    public Boolean getPrivate() {
+        return isPrivate;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public byte[] getData() {
-        return data;
-    }
-
-    public void setData(byte[] data) {
-        this.data = data;
-    }
-
-
-    public ImagePermissiion getPermission() {
-        return permission;
-    }
-
-    public void setPermission(ImagePermissiion permission) {
-        this.permission = permission;
+    public void setPrivate(Boolean aPrivate) {
+        isPrivate = aPrivate;
     }
 
     @Override
     public String toString() {
         return "Image{" +
                 "id=" + id +
-                ", title='" + title + '\'' +
-                ", size='" + size + '\'' +
-                ", description='" + description + '\'' +
-                ", data=" + Arrays.toString(data) +
-                ", permission=" + permission +
+                ", userId='" + userId + '\'' +
+                ", filePath='" + filePath + '\'' +
+                ", isPrivate=" + isPrivate +
                 '}';
     }
 }

@@ -1,4 +1,4 @@
-package com.nana.imagerepository.model;
+package com.nana.imagerepository.Model;
 
 public class Response {
     private String message;
