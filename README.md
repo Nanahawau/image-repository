@@ -1,11 +1,14 @@
-#Image Repository
+Image Repository
+----------------
 
-##Introduction
+Introduction
+------------
 This project is an image repository that takes advantage of
 the minio's object storage capabilities to store images one at a time and 
 in bulk. 
 
-##Tools 
+Tools 
+-------
 * Spring Boot
 * Spring Data JPA
 * SQL Native Queries
@@ -15,9 +18,11 @@ in bulk.
 * H2 Database
 
 
-##Setup
+Setup
+------
 
-###What is Minio?
+What is Minio?
+-----------------
 
 MinIO is an Amazon S3 compatible server-side
 software storage stack, it can handle unstructured data 
@@ -30,7 +35,8 @@ Some of it's benefits include:
 * Availabilty
 * Durability
 
-##Setting up minio locally in Spring Boot
+Setting up minio locally in Spring Boot
+----------------------------------------
 
 For this project to run on your local machine, you have to set 
 up a minio server locally. Click on the link below and follow the
@@ -45,7 +51,8 @@ application.properties file
 * secret.key
 * bucket.name
 
-##Encryption of Minio Bucket
+Encryption of Minio Bucket
+----------------------------
 MinIO uses a key-management-system (KMS) to support SSE-S3. If a client requests
 SSE-S3, or auto-encryption is enabled, the MinIO server encrypts each object with an 
 unique object key which is protected by a master key managed by the KMS.
@@ -81,27 +88,32 @@ You can read the KMS guide for more information
 https://docs.min.io/docs/minio-kms-quickstart-guide.html
 
 
-##Application Security
+Application Security
+---------------------
 All rest endpoints except the /login and /register are secured using JWT and must be called 
 with a JWT token in the header.
 
 
-##Database
+Database
+----------
 An in-memory database set up for storing image and user related information.
 
-####Postman Collection
+Postman Collection
+------------------
 At the root of the project is a postman collection file, import into Postman and use as a guide.
 Alternatively, you can use the link below to access the postman docs online.
 https://documenter.getpostman.com/view/9516731/TVzViGL2
 
 
 
-##Swagger Documentation URL
+Swagger Documentation URL
+-----------------------------
 When you run the application, you can access the swagger docs on this url
 http://localhost:8900/swagger-ui.html#/
 
 
-##Author 
+Author 
+------------
 Nana Hawau Adeku
 https://www.linkedin.com/in/nana-hawau-adeku-6a391160
 
