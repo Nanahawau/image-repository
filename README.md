@@ -12,7 +12,7 @@ in bulk.
 * Minio
 * Spring Security
 * JWT 
-* Postgres 
+* H2 Database
 
 
 ##Setup
