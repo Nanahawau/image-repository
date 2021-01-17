@@ -1,31 +1,31 @@
 package com.nana.imagerepository.Entity;
 
-import com.nana.imagerepository.Model.ImagePermission;
-import org.hibernate.annotations.Type;
-
 import javax.persistence.*;
-import java.util.Arrays;
+import java.util.Optional;
+
 
 @Entity
-@Table(name = "image")
+@Table(name = "images")
 public class Image {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String userId;
     private String filePath;
-    @Column(unique = true)
     private Boolean isPrivate = true;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "user_id", referencedColumnName = "id")
+    private User user;
 
 
     public Image() {
     }
 
-    public Image(String userId, String filePath, Boolean isPrivate) {
-        this.userId = userId;
+    public Image(String filePath, Boolean isPrivate, User user) {
         this.filePath = filePath;
         this.isPrivate = isPrivate;
+        this.user = user;
     }
 
     public Long getId() {
@@ -34,14 +34,6 @@ public class Image {
 
     public void setId(Long id) {
         this.id = id;
-    }
-
-    public String getUserId() {
-        return userId;
-    }
-
-    public void setUserId(String userId) {
-        this.userId = userId;
     }
 
     public String getFilePath() {
@@ -60,13 +52,21 @@ public class Image {
         isPrivate = aPrivate;
     }
 
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
+    }
+
     @Override
     public String toString() {
         return "Image{" +
                 "id=" + id +
-                ", userId='" + userId + '\'' +
                 ", filePath='" + filePath + '\'' +
                 ", isPrivate=" + isPrivate +
+                ", user=" + user +
                 '}';
     }
 }

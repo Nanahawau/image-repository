@@ -41,7 +41,9 @@ public class SwaggerConfig {
      */
     private ApiInfo apiInfo() {
         return new ApiInfoBuilder().title("Image Repository")
-                .description("An Image Repository")
+                .description("This project is an image repository that takes advantage of\n" +
+                        "the minio's object storage capabilities to store images one at a time and \n" +
+                        "in bulk.")
                 .termsOfServiceUrl("")
                 .contact("nanaadeku@gmail.com").license("M.I.T")
                 .licenseUrl("nanaadeku@gmail.com").version("1.0").build();

@@ -58,8 +58,11 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 .authorizeRequests().antMatchers(
-                "/ums/v1/register",
-                "/ums/v1/login",
+                "/api/v1/register",
+                "/api/v1/login",
+                "/h2-console",
+                "/api/v1/public/images",
+                "/h2-console/**",
                 "/v2/api-docs",
                 "/configuration/ui",
                 "/swagger-resources/**",
@@ -67,6 +70,8 @@ public class SpringSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 "/swagger-ui.html",
                 "/webjars/**").permitAll()
                 .anyRequest().authenticated();
+        http.headers().frameOptions().disable();
+
 
         http.addFilterBefore(authTokenFilter, UsernamePasswordAuthenticationFilter.class);
     }

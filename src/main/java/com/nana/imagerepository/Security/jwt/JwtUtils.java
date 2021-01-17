@@ -21,7 +21,7 @@ public class JwtUtils implements Serializable {
     private static final Logger logger = LoggerFactory.getLogger(AuthEntryPointJwt.class);
 
     public String generateJwtToken(UserDetails userDetails) {
-        int jwtExpirationMs = 50 * 60 * 60;
+        int jwtExpirationMs = 3600000;
         return Jwts.builder().setSubject((userDetails.getUsername())).setIssuedAt(new Date())
                 .setExpiration(new Date((new Date()).getTime() + jwtExpirationMs)).signWith(SignatureAlgorithm.HS512, jwtSecret)
                 .compact();

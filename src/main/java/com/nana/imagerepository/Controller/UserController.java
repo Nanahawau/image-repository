@@ -1,8 +1,7 @@
 package com.nana.imagerepository.Controller;
 
 import com.nana.imagerepository.Entity.User;
-import com.nana.imagerepository.Model.JwtResponse;
-import com.nana.imagerepository.Service.AuthenticationService;
+import com.nana.imagerepository.Service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -11,13 +10,15 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("api/v1")
-public class AuthenticationController {
-    @Autowired
-    AuthenticationService authenticationService;
+@RequestMapping("/api/v1")
+public class UserController {
 
-    @PostMapping("/login")
-    public ResponseEntity<JwtResponse> login (@RequestBody User user) throws Exception {
-        return authenticationService.authenticate(user);
+    @Autowired
+    UserService userService;
+
+
+    @PostMapping("/register")
+    public ResponseEntity<?> register (@RequestBody User user) {
+        return userService.register(user);
     }
 }

@@ -1,18 +1,31 @@
 package com.nana.imagerepository.Entity;
 
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
+@Entity
+@Table(name = "users")
 public class User {
 
     @Id
-    @GeneratedValue(strategy= GenerationType.AUTO, generator="users_seq")
+    @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Long id;
     private String username;
     private String password;
     private String email;
 
+    public User() {
+    }
+
+    public User(String username, String password, String email, List<Image> images) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+    }
+
+    @OneToMany(mappedBy = "user", fetch = FetchType.LAZY, cascade = CascadeType.ALL,
+            orphanRemoval = true)
+    List<Image> images;
 
     public Long getId() {
         return id;
@@ -46,6 +59,14 @@ public class User {
         this.email = email;
     }
 
+    public List<Image> getImages() {
+        return images;
+    }
+
+    public void setImages(List<Image> images) {
+        this.images = images;
+    }
+
     @Override
     public String toString() {
         return "User{" +
@@ -53,6 +74,7 @@ public class User {
                 ", username='" + username + '\'' +
                 ", password='" + password + '\'' +
                 ", email='" + email + '\'' +
+                ", images=" + images +
                 '}';
     }
 }

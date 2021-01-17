@@ -2,27 +2,28 @@ package com.nana.imagerepository.Model;
 
 public class ImageResponse {
 
-    private String name;
+    private Long id;
     private String url;
-    private String permission;
-    private Long size;
 
     public ImageResponse() {
     }
-
-    public ImageResponse(String name, String url, String permission, Long size) {
-        this.name = name;
+    public ImageResponse( String url) {
         this.url = url;
-        this.permission = permission;
-        this.size = size;
+
     }
 
-    public String getName() {
-        return name;
+    public ImageResponse(Long id, String url) {
+        this.id = id;
+        this.url = url;
+
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public String getUrl() {
@@ -33,19 +34,5 @@ public class ImageResponse {
         this.url = url;
     }
 
-    public String getPermission() {
-        return permission;
-    }
 
-    public void setPermission(String permission) {
-        this.permission = permission;
-    }
-
-    public Long getSize() {
-        return size;
-    }
-
-    public void setSize(Long size) {
-        this.size = size;
-    }
 }
