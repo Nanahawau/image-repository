@@ -90,7 +90,7 @@ https://docs.min.io/docs/minio-kms-quickstart-guide.html
 
 Application Security
 ---------------------
-All rest endpoints except the /login and /register are secured using JWT and must be called 
+All rest endpoints except the /login, /register and /public/images are secured using JWT and must be called 
 with a JWT token in the header.
 
 
