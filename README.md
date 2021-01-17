@@ -91,7 +91,7 @@ https://docs.min.io/docs/minio-kms-quickstart-guide.html
 Application Security
 ---------------------
 All rest endpoints except the /login, /register and /public/images are secured using JWT and must be called 
-with a JWT token in the header.
+with a JWT token. Add to Auth(Bearer Token) on Postman
 
 
 Database
@@ -101,14 +101,14 @@ An in-memory database set up for storing image and user related information.
 Postman Collection
 ------------------
 At the root of the project is a postman collection file, import into Postman and use as a guide.
-Alternatively, you can use the link below to access the postman docs online.
+Alternatively, you can use the link below to access the Postman docs online.
 https://documenter.getpostman.com/view/9516731/TVzViGL2
 
 
 
 Swagger Documentation URL
 -----------------------------
-When you run the application, you can access the swagger docs on this url
+When you run the application, you can access the Swagger docs on this url
 http://localhost:8900/swagger-ui.html#/
 
 
